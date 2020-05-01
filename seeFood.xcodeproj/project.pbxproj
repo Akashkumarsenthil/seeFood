@@ -13,7 +13,7 @@
 		6BC07A6B245C09B2002C34E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BC07A69245C09B2002C34E7 /* Main.storyboard */; };
 		6BC07A6D245C09B4002C34E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BC07A6C245C09B4002C34E7 /* Assets.xcassets */; };
 		6BC07A70245C09B4002C34E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BC07A6E245C09B4002C34E7 /* LaunchScreen.storyboard */; };
-		6BC07A78245C0A0D002C34E7 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6BC07A77245C0A0D002C34E7 /* MobileNetV2.mlmodel */; };
+		6BC07A7A245C965D002C34E7 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 6BC07A79245C965D002C34E7 /* Inceptionv3.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		6BC07A6C245C09B4002C34E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BC07A6F245C09B4002C34E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BC07A71245C09B4002C34E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BC07A77245C0A0D002C34E7 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
+		6BC07A79245C965D002C34E7 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 				6BC07A6C245C09B4002C34E7 /* Assets.xcassets */,
 				6BC07A6E245C09B4002C34E7 /* LaunchScreen.storyboard */,
 				6BC07A71245C09B4002C34E7 /* Info.plist */,
-				6BC07A77245C0A0D002C34E7 /* MobileNetV2.mlmodel */,
+				6BC07A79245C965D002C34E7 /* Inceptionv3.mlmodel */,
 			);
 			path = seeFood;
 			sourceTree = "<group>";
@@ -142,8 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BC07A68245C09B2002C34E7 /* ViewController.swift in Sources */,
+				6BC07A7A245C965D002C34E7 /* Inceptionv3.mlmodel in Sources */,
 				6BC07A64245C09B2002C34E7 /* AppDelegate.swift in Sources */,
-				6BC07A78245C0A0D002C34E7 /* MobileNetV2.mlmodel in Sources */,
 				6BC07A66245C09B2002C34E7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

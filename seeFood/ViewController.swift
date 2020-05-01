@@ -26,33 +26,70 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let userPickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+        
+        if let image = info[.originalImage] as? UIImage {
+                    
+            imageView.image = image
             
-            imageView.image = userPickedImage
+            imagePicker.dismiss(animated: true, completion: nil)
             
-            guard let ciimage = CIImage(image: userPickedImage) else{
-                fatalError("Could not convert UIImage to CIImage")
+            
+            guard let ciImage = CIImage(image: image) else {
+                fatalError("couldn't convert uiimage to CIImage")
             }
             
+            detect(image: ciImage)
+            
         }
-        
-        imagePicker.dismiss(animated: true, completion: nil)
     }
     
     func detect(image: CIImage) {
-        guard let model = try? VNCoreMLModel(for: MobileNetV2().model) else {
-            fatalError("Loading core ML model ")
+        
+        // Load the ML model through its generated class
+        guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else {
+            fatalError("can't load ML model")
         }
         
-        let request = VNCoreMLModel(model) { (request, error) in
-            let results = 
+        let request = VNCoreMLRequest(model: model) { request, error in
+            guard let results = request.results as? [VNClassificationObservation],
+                let topResult = results.first
+                else {
+                    fatalError("unexpected result type from VNCoreMLRequest")
+                }
+            
+                if topResult.identifier.contains("hotdog") {
+                    DispatchQueue.main.async {
+                        self.navigationItem.title = "Hotdog!"
+                        self.navigationController?.navigationBar.barTintColor = UIColor.green
+                        self.navigationController?.navigationBar.isTranslucent = false
+                        
+                        
+                    }
+                }
+                else {
+                    DispatchQueue.main.async {
+                        self.navigationItem.title = "Not Hotdog!"
+                        self.navigationController?.navigationBar.barTintColor = UIColor.red
+                        self.navigationController?.navigationBar.isTranslucent = false
+                        
+                    }
+                }
+                
             
         }
         
+        let handler = VNImageRequestHandler(ciImage: image)
+        
+        do { try handler.perform([request]) }
+        catch { print(error) }
+        
     }
+    
+
 
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
-        
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = false
         present(imagePicker, animated: true, completion: nil)
         
         
